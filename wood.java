@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 //---------------------------------------
 //-- Created by:     Alireza Teimoori  --
@@ -7,25 +6,32 @@ import java.util.Scanner;
 //-- Course Code:    ICS4U             --
 //-- Teacher Name:   Chris Atkinson    --
 //---------------------------------------
+//-- This program calculates any one of--
+//-- the three dimensions of an abject --
+//---------------------------------------
 
+import java.util.Scanner;
 
 public class wood {
 
-    public static float boardFoot(float length, float width) { // Define boardFoot function
-        float output = ( length * width ) / 144;
+    public static float boardFoot(float first, float second) { // Define boardFoot function
+        float output = 144 / ( first * second ) ; // The formula is the same for all the dimensions
         return output;
     }
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); // Intro an instence of Scanner
 
-        System.out.println("Hello! Please enter the length:");
-        float userLength = scanner.nextInt();
+        // Asking for and storing data:
+        System.out.println("Which dimention do you want to solve for? \n(Please type --> length, width, or height)");
+        String dimension = scanner.next();
+        System.out.println("OK! Please enter the first dimension:");
+        float userfirst = scanner.nextInt();
+        System.out.println("OK! Please enter the other dimension:");
+        float usersecond = scanner.nextInt();
 
-        System.out.println("Hello! Please enter the width:");
-        float userWidth = scanner.nextInt();
+        // Process and output (the last part rounds the number to 2 decimal places):
+        System.out.println("the " + dimension + " of your object is approximately equal to: " + Math.round(boardFoot(userfirst, usersecond) * 100.0) / 100.0);
 
-        System.out.println(boardFoot(userLength, userWidth));
-
-        scanner.close();
+        scanner.close(); // Closing scanner to avoid warnings
     }
 }
